@@ -10,7 +10,10 @@ import datetime
 import statistics
 
 # maximum increase if listener number wrt to total listeners
-maximumListenerIncrease = 0.3 # 10%
+maximumListenerIncrease = 1 # 100%
+
+# sampling interval in seconds
+samplingIntervalInSeconds = 1
 
 # movie file is cmdline argument
 inputPath = sys.argv[1]
@@ -59,7 +62,7 @@ while success:
         break
 
     # update every second
-    if framenbr % int(10*fps) == 0:
+    if framenbr % int(samplingIntervalInSeconds*fps) == 0:
         
         # change to grey scale
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -119,6 +122,7 @@ while success:
         # prints als CSV line
         csvLine = f"{framenbr}, {relTimeSec}, {relTimeMin}, {frameTimeString}, {numberOfListeners}"
         print(csvLine)
+        #print(data)
 
         outputFile.write(csvLine + '\n')
         outputFile.flush()

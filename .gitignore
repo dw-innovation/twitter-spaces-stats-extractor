@@ -114,3 +114,4 @@ dmypy.json
 .pyre/
 *.mov
 .DS_Store
+*.MP4

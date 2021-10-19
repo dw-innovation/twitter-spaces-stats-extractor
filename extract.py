@@ -42,6 +42,9 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
     success,frame = vidcap.read()
     framenbr = 0
 
+    # count lines written out to csv file
+    csvLineCounter = -1
+
     while success:
 
         # next frame
@@ -57,6 +60,9 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
         # update every <samplingIntervalInSeconds>
         if framenbr % int(samplingIntervalInSeconds*fps) == 0:
             
+            # update csvLine Counter
+            csvLineCounter += 1
+
             # change to grey scale
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -149,10 +155,16 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
             outputFile.write(csvLine + '\n')
             outputFile.flush()
 
+            # create graph of current csv with gnuplot
+            os.system("gnuplot -e \"filename='graphs/plot%04d.png'\" plot.gnu" % csvLineCounter)
+
 if __name__ == '__main__':
 
     # sampling interval in seconds
-    samplingIntervalInSeconds = 5
+    samplingIntervalInSeconds = 1
+
+    # folder, in whoch gnuplot stores all the graphs
+    graphFolder = "graphs"
 
     # movie file is cmdline argument
     inputPath = sys.argv[1]
@@ -162,8 +174,8 @@ if __name__ == '__main__':
     #creationDatetime = datetime.datetime.fromtimestamp(creationTime)
 
     # Mac
-    creationDatetime = datetime.datetime(year=2021, month=9, day=26, hour=21, minute=56, second=00)
-    extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'mac.csv')
+    creationDatetime = datetime.datetime(year=2021, month=10, day=19, hour=13, minute=1, second=19)
+    extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'data.csv')
 
     # iPhone
     #creationDatetime = datetime.datetime(year=2021, month=9, day=26, hour=22, minute=47, second=18)

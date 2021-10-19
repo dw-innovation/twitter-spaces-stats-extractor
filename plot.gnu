@@ -1,5 +1,7 @@
+if (!exists("filename")) filename='default.png'
+
 set term png font "Palatino, 14" size 1280, 720
-set output '@deutschlandfunk Twitter Space 2021-09-26 22 CEST.png'
+set output filename
 
 set key autotitle columnhead
 set boxwidth 0.5 relative
@@ -15,11 +17,12 @@ set xdata time
 set timefmt "%H:%M:%S"
 set format x "%H:%M"
 
-set yrange [0:1100]
+set xrange ["13:00:00":"14:10:00"]
+set yrange [0:250]
 
 #set style data histogram
 #set style fill solid
 
-set title 'Evolution of listeners: Deutschlandfunk Twitter Space 2021-09-26 22 CEST'
+set title 'Evolution of listeners: dw chinese Twitter Space 2021-10-19 13 CEST'
 
-plot 'mac.csv' u 4:5 w lines
+plot 'data.csv' u 4:5 w lines

@@ -114,4 +114,9 @@ dmypy.json
 .pyre/
 *.mov
 .DS_Store
+
+# added by andy
 *.MP4
+graphs/*
+*.mov
+*.mp3

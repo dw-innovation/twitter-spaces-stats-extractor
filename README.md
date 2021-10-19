@@ -9,8 +9,15 @@ Install [tesseract](https://github.com/tesseract-ocr/tesseract), [pytesseract](h
 
 ## Usage
 ```
-./extract <file name of screen recording> <file name of the output CSV file>
+./extract <file name of screen recording>
 ```
+
+## output
+The extracted data is stored as a CSV file in ```data.csv```.
+In addition, the script generates a graph with gnuplot for every recorded second, stored in ```graphs/```. Note that a few parameters need to be changed manually in ```gnu.plot```:
+* xrange
+* yrange
+* tilte
 
 ## The screen recording as source
 The screen recording needs to be done on a Desktop browser while the Twitter Space is active. Also, the reocrding needs to be cropped to the essential information, a screenshot is shown here:

@@ -120,3 +120,4 @@ dmypy.json
 graphs/*
 *.mov
 *.mp3
+*.png

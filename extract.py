@@ -16,7 +16,6 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
     maximumListenerIncrease = 1 # 100%
 
 
-
     # start output and write header
     outputFile = open(outputCSVFilename, 'w')
     header = "frame, seconds, minutes, time, listeners\n"
@@ -69,10 +68,6 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
             # resize
             gray = cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_LINEAR)
 
-            #cv2.imshow("Resized image", gray)
-            #cv2.waitKey(0)
-            #cv2.destroyAllWindows()
-
             # text extraction
             data = pytesseract.image_to_string(gray, lang='eng', config='--psm 3').lower()
 
@@ -85,13 +80,8 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
             # go though each extracted line
             for dataLine in dataLines:
 
-                #print(dataLine)
-
                 # search for relevant parts
                 extractedGroups = re.findall(r'(\d+k?) (?:others|weitere)', dataLine)
-
-                #print(extractedGroups)
-                #print("************")
 
                 # if we found something
                 if len(extractedGroups) > 0:
@@ -156,7 +146,7 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
             outputFile.flush()
 
             # create graph of current csv with gnuplot
-            os.system("gnuplot -e \"filename='graphs/plot%04d.png'\" plot.gnu" % csvLineCounter)
+            os.system("gnuplot -e \"filename='%s/plot%04d.png'\" plot.gnu" % (graphFolder, csvLineCounter))
 
 if __name__ == '__main__':
 
@@ -173,12 +163,15 @@ if __name__ == '__main__':
     #creationTime = os.stat(outputPath).st_birthtime
     #creationDatetime = datetime.datetime.fromtimestamp(creationTime)
 
-    # Mac
-    creationDatetime = datetime.datetime(year=2021, month=10, day=19, hour=13, minute=1, second=19)
-    extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'data.csv')
+    # Mac Stay or Leave
+    #creationDatetime = datetime.datetime(year=2021, month=10, day=19, hour=13, minute=1, second=19)
+    #extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'data.csv')
 
-    # iPhone
+    # iPhone DLF
     #creationDatetime = datetime.datetime(year=2021, month=9, day=26, hour=22, minute=47, second=18)
     #extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'iPhone.csv')
 
+    # Mac DLF
+    creationDatetime = datetime.datetime(year=2021, month=9, day=26, hour=21, minute=56, second=10)
+    extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'data.csv')
   

@@ -17,13 +17,10 @@ set xdata time
 set timefmt "%H:%M:%S"
 set format x "%H:%M"
 
-set xrange ["14:00:00":"14:40:00"]
-set yrange [0:30]
-
-#set style data histogram
-#set style fill solid
+#set xrange ["14:00:00":"14:40:00"]
+#set yrange [0:30]
 
 # do not use the Klammeraffe or underscores
-set title 'Evolution of listeners: dw environment Twitter Space 2021-11-12 13 CEST'
+set title 'Evolution of Twitter Space listeners'
 
 plot 'data.csv' u 4:5 w lines

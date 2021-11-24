@@ -171,7 +171,7 @@ if __name__ == '__main__':
     #creationDatetime = datetime.datetime(year=2021, month=9, day=26, hour=22, minute=47, second=18)
     #extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'iPhone.csv')
 
-    # Mac DLF
-    creationDatetime = datetime.datetime(year=2021, month=11, day=4, hour=12, minute=1, second=2)
+    # Mac
+    creationDatetime = datetime.datetime(year=2021, month=11, day=4, hour=14, minute=1, second=42)
     extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'data.csv')
   

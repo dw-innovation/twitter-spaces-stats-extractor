@@ -13,7 +13,7 @@ import statistics
 import config
 
 
-def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputCSVFilename):
+def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, outputCSVFilename, graphFolder, graphTitle, graphStartTime, graphEndTime, graphMinimumNumberOfListeners, graphMaximumNumberOfListeners):
 
     # maximum increase if listener number wrt to total listeners
     maximumListenerIncrease = 1 # 100%
@@ -144,20 +144,47 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationTime, inputPath, outputC
             outputFile.flush()
 
             # create graph of current csv with gnuplot
-            os.system("gnuplot -e \"filename='%s/plot%04d.png'\" plot.gnu" % (graphFolder, csvLineCounter))
+            systemCommand = "gnuplot -e \""
+            systemCommand += "filename='%s/plot%04d.png';" % (graphFolder, csvLineCounter)
+            systemCommand += "graphTitle='%s';" % graphTitle
+
+            systemCommand += "graphStartTime='%s';" % graphStartTime
+            systemCommand += "graphEndTime='%s';" % graphEndTime
+            systemCommand += "graphMinimumNumberOfListeners=%d;" % graphMinimumNumberOfListeners
+            systemCommand += "graphMaximumNumberOfListeners=%d;" % graphMaximumNumberOfListeners
+            
+            systemCommand += "\" plot.gnu"
+
+            #print(systemCommand)
+
+            os.system(systemCommand)
 
 if __name__ == '__main__':
-
-    # sampling interval in seconds
-    samplingIntervalInSeconds = 1
-
-    # folder, in which gnuplot stores all the graphs
-    graphFolder = "graphs"
 
     # movie file is cmdline argument
     inputPath = sys.argv[1]
 
+    # sampling interval in seconds
+    samplingIntervalInSeconds = config.samplingIntervalInSeconds
+
+    # title of the grpahs
+    graphTitle = config.graphTitle
+
+    # limits of the graphs' x-axis
+    graphStartTime = config.graphStartTime
+    graphEndTime = config.graphEndTime
+
+    # limits of the graphs' y-axis
+    graphMinimumNumberOfListeners = config.graphMinimumNumberOfListeners
+    graphMaximumNumberOfListeners = config.graphMaximumNumberOfListeners
+
+    # folder, in which gnuplot stores all the graphs
+    graphFolder = config.graphFolder
+
+    # create graph folder
+    os.makedirs(graphFolder, exist_ok=True)
+
     # Create CSV
-    creationDatetime = datetime.datetime(year=2021, month=11, day=4, hour=14, minute=1, second=42)
-    extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, 'data.csv')
+    videoCreationDatetime = config.videoCreationDatetime
+    extractCSV2Graph(samplingIntervalInSeconds, videoCreationDatetime, inputPath, 'data.csv', graphFolder, graphTitle, graphStartTime, graphEndTime, graphMinimumNumberOfListeners, graphMaximumNumberOfListeners)
   

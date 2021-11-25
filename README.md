@@ -13,7 +13,7 @@ In oder to create movie, you need to install [ffmpeg](https://ffmpeg.org).
 
 ## Usage
 
-### Cofiguration
+### Configuration
 Before starting the script, open up ```config.py```to specify a few useful parameters. The latter are explained in file.
 
 

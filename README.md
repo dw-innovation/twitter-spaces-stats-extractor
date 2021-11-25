@@ -24,7 +24,7 @@ Then extract the data using
 ```
 on the command line.
 
-The results are stored in ```data.csv```, while the created graphs are stored in ```graphs/```(unless you have changed to corresponding parameter in ```config.py```.
+The results are stored in ```data.csv```, while the created graphs are stored in ```graphs/```(unless you have changed to corresponding parameter in ```config.py```).
 
 ### Creating the movie
 You can assemble the graph images into a movie by executing

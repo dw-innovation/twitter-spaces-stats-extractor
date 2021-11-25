@@ -19,9 +19,7 @@ Before starting the script, open up ```config.py```to specify a few useful param
 
 ### Extracting the data
 Then extract the data using
-```
-./extract <file name of screen recording>
-```
+```./extract <file name of screen recording>```
 on the command line.
 
 The results are stored in ```data.csv```, while the created graphs are stored in ```graphs/```(unless you have changed to corresponding parameter in ```config.py```).

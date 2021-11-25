@@ -42,7 +42,7 @@ The screen recording needs to be done on a Desktop browser while the Twitter Spa
 The number between '+' and 'others' corresponds to the number of listeners.
 
 ## Visualisation of the evolution of listeners
-The following graphs shows the evolution the listener numbers over time during the daily newscast of the @tortoise twitter channel, recorded on 2021-09-16 12:30 UTC.
+The following graph shows the evolution listener numbers over time during the daily newscast of the @tortoise twitter channel, recorded on 2021-09-16 12:30 UTC.
 
 The graph shows that there is a built-up over a minimum of 5 minutes before the curve starts to stabilize. 
 

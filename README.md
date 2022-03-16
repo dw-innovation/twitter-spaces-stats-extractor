@@ -14,8 +14,7 @@ In oder to create movie, you need to install [ffmpeg](https://ffmpeg.org).
 ## Usage
 
 ### Configuration
-Before starting the script, open up ```config.py```to specify a few useful parameters. The latter are explained in file.
-
+Before starting the script, open up ```config.py```to specify a few useful parameters. The latter are explained in the file.
 
 ### Extracting the data
 Then extract the data using
@@ -23,6 +22,11 @@ Then extract the data using
 on the command line.
 
 The results are stored in ```data.csv```, while the created graphs are stored in ```graphs/```(unless you have changed to corresponding parameter in ```config.py```).
+
+### Filling the gaps
+In case that frames are not correctly extracted, the missing frames need to be created based on the last available frame. Use this script to do this:
+
+```./fillGraphGaps.py```
 
 ### Creating the movie
 You can assemble the graph images into a movie by executing

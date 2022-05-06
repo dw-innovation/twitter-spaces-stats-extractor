@@ -17,7 +17,7 @@ set ylabel '# of listeners'
 set grid
 
 #set xlabel 'minutes'
-set xlabel 'Time (CEST)'
+set xlabel 'Time (UTC)'
 
 set xdata time
 set timefmt "%H:%M:%S"

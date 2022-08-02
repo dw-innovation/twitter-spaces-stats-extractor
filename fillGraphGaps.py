@@ -8,7 +8,7 @@ def fill():
     fileList = glob.glob(f"{config.graphFolder}/*.png")
     fileList.sort()
 
-    expectedIndex = 0
+    expectedIndex = 3
 
     for filename in fileList:
         index = int(filename[-8:-4])
@@ -30,9 +30,9 @@ def fill():
 
                 print(f"Copying {lastValidFilename} -> {newFilename}")
                 shutil.copyfile(lastValidFilename, newFilename)
-                expectedIndex += 1  
+                expectedIndex += 1
 
-        expectedIndex += 1        
+        expectedIndex += 1
 
 
 if __name__ == '__main__':

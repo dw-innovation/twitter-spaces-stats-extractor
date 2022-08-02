@@ -15,8 +15,7 @@ import config
 
 def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, outputCSVFilename, graphFolder, graphTitle, graphStartTime, graphEndTime, graphMinimumNumberOfListeners, graphMaximumNumberOfListeners):
 
-    # maximum increase if listener number wrt to total listeners
-    maximumListenerIncrease = 1 # 100%
+    # maximum increase or decrease of listeners
 
     # start output and write header
     outputFile = open(outputCSVFilename, 'w')
@@ -120,7 +119,8 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, out
             median = statistics.median(listenerEvolution)
 
             # is the increase too large - > ignore, as this is an OCR problem
-            if  numberOfListeners > 20 and abs(numberOfListeners - median) > median * maximumListenerIncrease:
+            deviation = abs(numberOfListeners - median)
+            if deviation > maximumListenerDeviation:
                 print(f"change in number too large. Skipping")
                 print(f"extracted: {extracted}")
                 print(f"numberOfListeners: {numberOfListeners}")

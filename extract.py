@@ -53,14 +53,14 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, out
 
         # get next frame
         success,frame = vidcap.read()
-            
+
         # break if we are at the end
         if not success:
             break
 
         # update every <samplingIntervalInSeconds>
         if framenbr % int(samplingIntervalInSeconds*fps) == 0:
-            
+
             # update csvLine Counter
             csvLineCounter += 1
 
@@ -115,12 +115,12 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, out
             if len(listenerEvolution) > 20:
                 listenerEvolution = listenerEvolution[-20:]
 
-            
+
             # median
             median = statistics.median(listenerEvolution)
 
             # is the increase too large - > ignore, as this is an OCR problem
-            if  abs(numberOfListeners - median) > median * maximumListenerIncrease:
+            if  numberOfListeners > 20 and abs(numberOfListeners - median) > median * maximumListenerIncrease:
                 print(f"change in number too large. Skipping")
                 print(f"extracted: {extracted}")
                 print(f"numberOfListeners: {numberOfListeners}")
@@ -138,7 +138,7 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, out
             # prints als CSV line
             csvLine = f"{framenbr}, {relTimeSec}, {relTimeMin}, {frameTimeString}, {numberOfListeners}"
             print(csvLine)
- 
+
             # store in file
             outputFile.write(csvLine + '\n')
             outputFile.flush()
@@ -152,7 +152,7 @@ def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, out
             systemCommand += "graphEndTime='%s';" % graphEndTime
             systemCommand += "graphMinimumNumberOfListeners=%d;" % graphMinimumNumberOfListeners
             systemCommand += "graphMaximumNumberOfListeners=%d;" % graphMaximumNumberOfListeners
-            
+
             systemCommand += "\" plot.gnu"
 
             #print(systemCommand)
@@ -187,4 +187,3 @@ if __name__ == '__main__':
     # Create CSV
     videoCreationDatetime = config.videoCreationDatetime
     extractCSV2Graph(samplingIntervalInSeconds, videoCreationDatetime, inputPath, 'data.csv', graphFolder, graphTitle, graphStartTime, graphEndTime, graphMinimumNumberOfListeners, graphMaximumNumberOfListeners)
-  

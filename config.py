@@ -16,7 +16,7 @@ graphTitle = "Evolution of Twitter Space listeners"
 graphStartTime = "11:30:00"
 
 # where does the time range stop on the graphs?
-graphEndTime = "12:10:00"
+graphEndTime = "12:15:00"
 
 # what is the minimum number of listeners displayed in the graphs?
 graphMinimumNumberOfListeners = 0

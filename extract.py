@@ -2,7 +2,8 @@
 
 # written by Andy Giefer, Deutsche Welle
 
-from cv2 import cv2
+#from cv2 import cv2
+import cv2
 import pytesseract
 import sys
 import re

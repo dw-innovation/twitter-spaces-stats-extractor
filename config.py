@@ -4,7 +4,7 @@ import datetime
 graphFolder = "graphs"
 
 # at what time did the recording of the video file start?
-videoCreationDatetime = datetime.datetime(year=2022, month=7, day=20, hour=11, minute=30, second=30)
+videoCreationDatetime = datetime.datetime(year=2022, month=8, day=11, hour=11, minute=30, second=48)
 
 # evaluate a video frame every <samplingIntervalInSeconds>
 samplingIntervalInSeconds = 1
@@ -22,4 +22,4 @@ graphEndTime = "12:10:00"
 graphMinimumNumberOfListeners = 0
 
 # what is the maximum number of listeners displayed in the graphs?
-graphMaximumNumberOfListeners = 120
+graphMaximumNumberOfListeners = 40

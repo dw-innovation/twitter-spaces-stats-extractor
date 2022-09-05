@@ -8,7 +8,7 @@ def fill():
     fileList = glob.glob(f"{config.graphFolder}/*.png")
     fileList.sort()
 
-    expectedIndex = 1
+    expectedIndex = 0
 
     for filename in fileList:
         index = int(filename[-8:-4])

@@ -4,7 +4,7 @@ import datetime
 graphFolder = "graphs"
 
 # at what time did the recording of the video file start?
-videoCreationDatetime = datetime.datetime(year=2022, month=8, day=11, hour=11, minute=30, second=48)
+videoCreationDatetime = datetime.datetime(year=2022, month=9, day=3, hour=11, minute=28, second=11)
 
 # evaluate a video frame every <samplingIntervalInSeconds>
 samplingIntervalInSeconds = 1

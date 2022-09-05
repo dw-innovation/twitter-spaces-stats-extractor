@@ -17,6 +17,7 @@ import config
 def extractCSV2Graph(samplingIntervalInSeconds, creationDatetime, inputPath, outputCSVFilename, graphFolder, graphTitle, graphStartTime, graphEndTime, graphMinimumNumberOfListeners, graphMaximumNumberOfListeners):
 
     # maximum increase or decrease of listeners
+    maximumListenerDeviation = 20
 
     # start output and write header
     outputFile = open(outputCSVFilename, 'w')

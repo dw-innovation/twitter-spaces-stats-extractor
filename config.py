@@ -4,7 +4,7 @@ import datetime
 graphFolder = "graphs"
 
 # at what time did the recording of the video file start?
-videoCreationDatetime = datetime.datetime(year=2022, month=9, day=3, hour=11, minute=28, second=11)
+videoCreationDatetime = datetime.datetime(year=2022, month=9, day=30, hour=11, minute=27, second=45)
 
 # evaluate a video frame every <samplingIntervalInSeconds>
 samplingIntervalInSeconds = 1
@@ -16,10 +16,10 @@ graphTitle = "Evolution of Twitter Space listeners"
 graphStartTime = "11:30:00"
 
 # where does the time range stop on the graphs?
-graphEndTime = "12:15:00"
+graphEndTime = "12:40:00"
 
 # what is the minimum number of listeners displayed in the graphs?
 graphMinimumNumberOfListeners = 0
 
 # what is the maximum number of listeners displayed in the graphs?
-graphMaximumNumberOfListeners = 40
+graphMaximumNumberOfListeners = 50
